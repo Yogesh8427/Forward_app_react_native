@@ -1,20 +1,24 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import LogoScreen from './src/Screens/AuthScreens/LogoScreen';
+import FirstScreen from './src/Screens/AuthScreens/FirstScreen';
+import Loginoption from './src/Screens/AuthScreens/Loginoption';
+import Login from './src/Screens/AuthScreens/Login';
+import Singup from './src/Screens/AuthScreens/Singup';
+import Routes from './src/Navigations/Routes';
+import OtpScreen from './src/Screens/AuthScreens/OtpScreen';
+import SetpassScreen from './src/Screens/AuthScreens/SetpassScreen';
+import LocationScreen from './src/Screens/AuthScreens/LocationScreen';
+
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    < >
+      <Routes/>
+      {/* <LocationScreen /> */}
+      {/* <OtpScreen></OtpScreen> */}
+      {/* <Login/> */}
+    </>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+
+
