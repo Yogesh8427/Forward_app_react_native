@@ -12,6 +12,11 @@ export default{
     GALLERY:"Gallery",
     NOTIFICATION:"Notification",
     BOTTOMTAB:"Bottomtab",
-    SEARCH:"Search"
-    
+    SEARCH:"Search",
+    CHANGEPASSWORD:"changepassword",
+    EDITPROFILE:"editProfile",
+    POSTDETAILE:"postDetaile",
+    ADDPOSTES:"addpostes",
+    VEDIOPLAY:"vedioplayer",
+    REELS:"reelsScreen"
 }

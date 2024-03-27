@@ -15,17 +15,19 @@ import Backbutton from '../../Components/Backbutton'
 import colors from '../../styles/colors'
 import { scale } from '../../styles/scaling'
 import navigationString from '../../contants/navigationString'
-
+import { getlogin } from '../../redux/Actions/userloginAction'
+import { db } from '../../../firebaseConfig'
+import { doc, getDoc } from "firebase/firestore";
 const Login = ({ navigation }) => {
     const [mobile, setmobile] = useState("");
     const [password, setpassword] = useState("");
     const [show, setshow] = useState(true);
     const passwordpatter = /(?=.*[A-Z])(?=.*[a-z])(?=.*[@#%&]).{8,}/g;
     const phonepattern = /^([6,7,8,9][0-9]+)$/g;
-    const navigate=(screen)=>{
+    const navigate = (screen) => {
         navigation.navigate(screen)
     }
-    const changescreen = () => {
+    const changescreen = async () => {
         if (mobile.length != 10) {
             alert('*Please enter a valid mobile number')
         } else if (!phonepattern.test(mobile)) {
@@ -35,15 +37,26 @@ const Login = ({ navigation }) => {
             alert("*password should have 8 character 1 uppercase 1 lowercase or also have 1 '@,#,%,&' special character")
         }
         else {
-            setmobile("");
-            setpassword("");
-            navigate();
+            const docRef = doc(db, "users", mobile);
+            const docSnap = await getDoc(docRef);
+            if (docSnap.exists()) {
+                if (password == docSnap.data().password) {
+                    setmobile("");
+                    setpassword("");
+                    alert("Login Successfully");
+                    getlogin(true);
+                }else{
+                    alert("invalid user");
+                }
+            } else {
+                alert("invalid user");
+            }
         }
     }
     return (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
             <View style={style.container} >
-                <Backbutton onPress= {()=>navigate(navigationString.LOGINOPTION)} />
+                <Backbutton onPress={() => navigate(navigationString.LOGINOPTION)} />
                 <Textcon heading={"Welcome back!"} discription={"We are happy to see.You can login to continue"} />
                 <View>
                     <Input placeholderdata={"Mobile number"} newstyle={{ marginTop: 32 }}
@@ -59,10 +72,10 @@ const Login = ({ navigation }) => {
 
                 <View style={{ flexDirection: "row", justifyContent: "space-between" }}>
                     <TouchableOpacity style={{ marginTop: 16 }}>
-                        <Text style={{ ...style.text, fontSize:scale(13) }}>Use OTP</Text>
+                        <Text style={{ ...style.text, fontSize: scale(13) }}>Use OTP</Text>
                     </TouchableOpacity>
                     <TouchableOpacity style={{ marginTop: 16 }}>
-                        <Text style={{ ...style.text, fontSize:scale(13), color: colors.singup }}>Forget Password?</Text>
+                        <Text style={{ ...style.text, fontSize: scale(13), color: colors.singup }}>Forget Password?</Text>
                     </TouchableOpacity>
                 </View>
                 <KeyboardAvoidingView behavior='position' style={{ marginTop: "90%" }} keyboardVerticalOffset={40}>

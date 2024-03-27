@@ -1,22 +1,18 @@
-import LogoScreen from './src/Screens/AuthScreens/LogoScreen';
-import FirstScreen from './src/Screens/AuthScreens/FirstScreen';
-import Loginoption from './src/Screens/AuthScreens/Loginoption';
-import Login from './src/Screens/AuthScreens/Login';
-import Singup from './src/Screens/AuthScreens/Singup';
-import Routes from './src/Navigations/Routes';
-import OtpScreen from './src/Screens/AuthScreens/OtpScreen';
-import SetpassScreen from './src/Screens/AuthScreens/SetpassScreen';
-import LocationScreen from './src/Screens/AuthScreens/LocationScreen';
 
+import Routes from './src/Navigations/Routes';
+import colors from './src/styles/colors';
+import { Provider } from 'react-redux';
+import store from './src/redux/store';
+import { StatusBar } from 'react-native';
+import LocationScreen from './src/Screens/AuthScreens/LocationScreen';
 
 export default function App() {
   return (
-    < >
+    < Provider store={store}>
+    {/* <StatusBar barStyle={'light-content'}/> */}
       <Routes/>
-      {/* <LocationScreen /> */}
-      {/* <OtpScreen></OtpScreen> */}
-      {/* <Login/> */}
-    </>
+      {/* <LocationScreen/> */}
+      </Provider>
   );
 }
 

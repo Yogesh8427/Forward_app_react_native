@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "786342357032",
+    "project_id": "ward-2b925",
+    "storage_bucket": "ward-2b925.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:786342357032:android:6f623ef59568a26a71ad1d",
+        "android_client_info": {
+          "package_name": "com.fourward"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDBfxnNIVPaf3LrVg-PNTubSK1ZOcKV1jA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

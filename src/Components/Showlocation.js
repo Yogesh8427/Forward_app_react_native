@@ -4,7 +4,7 @@ import { scale, verticalScale } from '../styles/scaling'
 import colors from '../styles/colors'
 import imagePath from '../contants/imagePath'
 
-const Showlocation = ({loc}) => {
+const Showlocation = ({loc,image}) => {
     const[clicked,setclicked]=useState(true)
     const push=()=>{
         setclicked(clicked?false:true)
@@ -12,9 +12,9 @@ const Showlocation = ({loc}) => {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>{loc.item.loc}</Text>
-      <TouchableOpacity onPress={push}>
+      {image&&<TouchableOpacity onPress={push}>
         <Image source={imagePath.tick} style={clicked?{tintColor:colors.cardbackground}:null} />
-      </TouchableOpacity>
+      </TouchableOpacity>}
     </View>
   )
 }
