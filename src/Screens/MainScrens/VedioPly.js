@@ -5,10 +5,18 @@ import { StatusBar } from 'expo-status-bar'
 import { Video, ResizeMode } from 'expo-av';
 import vidios from '../../utils/vedios';
 import { verticalScale } from '../../styles/scaling';
+import { useFocusEffect } from '@react-navigation/native';
 const VedioPly = () => {
     const video = React.useRef(null);
   const [status, setStatus] = React.useState({});
   const [num,setnum]=React.useState(0);
+  useFocusEffect(
+    React.useCallback(() => {
+      return () => {
+        video.current.pauseAsync();
+      }
+    }, [])
+  );
   return (
     <>
     <StatusBar/>

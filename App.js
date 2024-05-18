@@ -9,7 +9,7 @@ import LocationScreen from './src/Screens/AuthScreens/LocationScreen';
 export default function App() {
   return (
     < Provider store={store}>
-    {/* <StatusBar barStyle={'light-content'}/> */}
+    {/* <StatusBar /> */}
       <Routes/>
       {/* <LocationScreen/> */}
       </Provider>
